@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@fal-ai/client": "^1.7.0",
     "@langchain/core": "^1.0.1",
     "@langchain/openai": "^1.0.0",
     "@langchain/tavily": "^1.0.0",
@@ -29,6 +30,7 @@
     "axios": "^1.12.2",
     "dotenv": "^17.2.3",
     "langchain": "^1.0.1",
+    "pexels": "^1.4.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"
   },

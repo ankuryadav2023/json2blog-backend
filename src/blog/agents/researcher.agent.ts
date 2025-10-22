@@ -16,7 +16,6 @@ export class ResearcherAgent{
 
     constructor(){
         this.llm = new ChatOpenAI({ model: "gpt-4o-mini" });
-
         this.tavilySearchTool = new TavilySearch({
         maxResults: 5,
         topic: "general"
