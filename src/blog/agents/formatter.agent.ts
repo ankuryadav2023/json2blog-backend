@@ -1,7 +1,9 @@
 import 'dotenv/config';
+import { Injectable } from '@nestjs/common';
 import { ChatOpenAI } from "@langchain/openai";
 import { HumanMessage, SystemMessage } from '@langchain/core/messages';
 
+@Injectable()
 export class FormatterAgent {
     private llm: ChatOpenAI;
     private llmWithStructuredOutput: any;
@@ -11,9 +13,6 @@ export class FormatterAgent {
         this.llm = new ChatOpenAI({ model: "gpt-4o-mini" });
 
         this.llmWithStructuredOutput = this.llm.withStructuredOutput({
-            "name": "blog_post_schema",
-            "strict": true,
-            "schema": {
                 "type": "object",
                 "description": "Defines the structure of a blog post, including the title and a list of content blocks.",
                 "properties": {
@@ -112,8 +111,7 @@ export class FormatterAgent {
                 },
                 "required": ["title", "blocks"],
                 "additionalProperties": false
-            }
-        });
+            });
 
         this.systemPromptForFormatterAgent = new SystemMessage('Your task is to format the provided response from an LLM into a structured output.');
     }

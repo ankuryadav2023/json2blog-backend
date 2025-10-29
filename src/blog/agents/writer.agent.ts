@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import { Injectable } from '@nestjs/common';
 import { ChatOpenAI } from "@langchain/openai";
 import { createClient } from 'pexels';
 import { fal } from "@fal-ai/client";
@@ -6,6 +7,7 @@ import { tool } from "@langchain/core/tools";
 import { z } from "zod";
 import { HumanMessage, SystemMessage } from '@langchain/core/messages';
 
+@Injectable()
 export class WriterAgent{
     private pexelsClient: any;
     private llm: ChatOpenAI;

@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import { Injectable } from '@nestjs/common';
 import { ChatOpenAI } from "@langchain/openai";
 import { TavilySearch } from "@langchain/tavily";
 import { DynamicStructuredTool, tool } from "@langchain/core/tools";
@@ -6,6 +7,7 @@ import axios from 'axios';
 import { z } from "zod";
 import { HumanMessage, SystemMessage } from '@langchain/core/messages';
 
+@Injectable()
 export class ResearcherAgent{
     private llm: ChatOpenAI;
     private tavilySearchTool: TavilySearch;
@@ -35,7 +37,7 @@ export class ResearcherAgent{
                 });
                 return JSON.stringify(response.data);
                 } catch (error) {
-                console.log(error.message);
+                console.log(error);
                 return JSON.stringify(error.message);
                 }
             },
